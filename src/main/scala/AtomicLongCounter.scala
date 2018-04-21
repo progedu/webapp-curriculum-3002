@@ -9,7 +9,9 @@ object AtomicLongCounterMain extends App {
 }
 
 object AtomicLongCounter {
+  
+  val count = new AtomicLOng(0L)
 
-  def next: Long = ???
+  def next: Long = count.incrementAndGet()
 
 }
