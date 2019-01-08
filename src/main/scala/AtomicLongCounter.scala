@@ -10,6 +10,13 @@ object AtomicLongCounterMain extends App {
 
 object AtomicLongCounter {
 
-  def next: Long = ???
+  private val lastNumber = new AtomicLong()
+
+  def next: Long = {
+    val nextNumber = lastNumber.updateAndGet(new LongUnaryOperator {
+      override def applyAsLong(operand: Long): Long = operand + 1
+    })
+    nextNumber
+  }
 
 }
