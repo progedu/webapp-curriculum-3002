@@ -11,7 +11,7 @@ object LockObjectMain2 extends App {
 object HashDigestProvider2 {
 
   def digest(str: String): List[Byte] = {
-    lazy val md = MessageDigest.getInstance("SHA-1")
+    val md = MessageDigest.getInstance("SHA-1")
     md.update(str.getBytes)
     md.digest().toList
   }
