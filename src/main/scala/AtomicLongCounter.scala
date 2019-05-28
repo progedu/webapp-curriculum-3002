@@ -17,5 +17,7 @@ object AtomicLongCounter {
       override def applyAsLong(operand: Long): Long =  operand + 1
     })
   }
+  //  こっちの方がシンプル
+  //  def next: Long = counter.incrementAndGet()
 
 }
