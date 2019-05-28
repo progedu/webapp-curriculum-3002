@@ -11,7 +11,8 @@ object LockObjectMain1 extends App {
 object HashDigestProvider1 {
   private[this] val md = MessageDigest.getInstance("SHA-1")
 
-  def digest(str: String): List[Byte] = {
+  // mdのオブジェクトでsynchronizedブロックを作成する
+  def digest(str: String): List[Byte] = md.synchronized {
     md.reset()
     md.update(str.getBytes)
     md.digest().toList
