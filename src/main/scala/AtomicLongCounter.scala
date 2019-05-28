@@ -1,4 +1,5 @@
 import java.util.concurrent.atomic.AtomicLong
+import java.util.function.LongUnaryOperator
 
 object AtomicLongCounterMain extends App {
 
@@ -9,7 +10,12 @@ object AtomicLongCounterMain extends App {
 }
 
 object AtomicLongCounter {
+  private[this] val counter = new AtomicLong(0L)
 
-  def next: Long = ???
+  def next: Long = {
+    counter.updateAndGet(new LongUnaryOperator {
+      override def applyAsLong(operand: Long): Long =  operand + 1
+    })
+  }
 
 }
