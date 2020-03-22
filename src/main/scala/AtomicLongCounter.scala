@@ -10,6 +10,6 @@ object AtomicLongCounterMain extends App {
 
 object AtomicLongCounter {
 
-  def next: Long = ???
-
+  var counter = new AtomicLong(0L)
+  def next: Long = counter.getAndIncrement()
 }
