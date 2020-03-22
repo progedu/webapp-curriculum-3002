@@ -10,6 +10,9 @@ object AtomicLongCounterMain extends App {
 
 object AtomicLongCounter {
 
-  def next: Long = ???
+  var lastNumber = new AtomicLong()
+  def next: Long = {
+    lastNumber.addAndGet(1)
+  }
 
 }

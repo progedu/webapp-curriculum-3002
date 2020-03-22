@@ -12,8 +12,10 @@ object HashDigestProvider1 {
   private[this] val md = MessageDigest.getInstance("SHA-1")
 
   def digest(str: String): List[Byte] = {
-    md.reset()
-    md.update(str.getBytes)
+    synchronized {
+      md.reset()
+      md.update(str.getBytes)
+    }
     md.digest().toList
   }
 
