@@ -19,4 +19,10 @@ object HashDigestProvider1 {
     }
   }
 
+  def digestSampleAnswer(str: String): List[Byte] = md.synchronized {
+    md.reset()
+    md.update(str.getBytes)
+    md.digest().toList
+  }
+
 }
