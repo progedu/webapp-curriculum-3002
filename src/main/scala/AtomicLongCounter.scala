@@ -9,7 +9,10 @@ object AtomicLongCounterMain extends App {
 }
 
 object AtomicLongCounter {
+  private[this] val lastNumber = new AtomicLong(0L)
 
-  def next: Long = ???
-
+  def next: Long = {
+    val nextNumber = lastNumber.incrementAndGet()
+    nextNumber
+  }
 }

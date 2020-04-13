@@ -13,8 +13,10 @@ object HashDigestProvider1 {
 
   def digest(str: String): List[Byte] = {
     md.reset()
-    md.update(str.getBytes)
-    md.digest().toList
+    synchronized {
+      md.update(str.getBytes)
+      md.digest().toList
+    }
   }
 
 }
